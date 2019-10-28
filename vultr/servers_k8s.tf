@@ -2,7 +2,7 @@
 resource "vultr_server" "k8s_server" {
   count                  = 1
   region_id              = "9"
-  plan_id                = "202"
+  plan_id                = "203"
   os_id                  = "352"
   label                  = "kubeserver"
   hostname               = "kubeserver"
@@ -37,7 +37,7 @@ output "kube_master_ip_addr" {
 resource "vultr_server" "k8s_nodes" {
   count                  = 1
   region_id              = "9"
-  plan_id                = "202"
+  plan_id                = "203"
   os_id                  = "352"
   label                  = "kubenode-${count.index + 1}"
   hostname               = "kubenode-${count.index + 1}"
