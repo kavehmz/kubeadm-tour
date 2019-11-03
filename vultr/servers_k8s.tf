@@ -4,8 +4,8 @@ resource "vultr_server" "k8s_server" {
   region_id              = "9"
   plan_id                = "203"
   os_id                  = "352"
-  label                  = "kubeserver"
-  hostname               = "kubeserver"
+  label                  = "kubeserver-${count.index + 1}"
+  hostname               = "kubeserver-${count.index + 1}"
   ssh_key_ids            = ["${vultr_ssh_key.setup_key.id}"]
   notify_activate        = false
   enable_private_network = true
@@ -25,7 +25,7 @@ resource "vultr_server" "k8s_server" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/puppet_agent.sh",
-      "/tmp/puppet_agent.sh ${self.internal_ip} ${vultr_server.puppet_master.internal_ip} kubeserver",
+      "/tmp/puppet_agent.sh ${self.internal_ip} ${vultr_server.puppet_master.internal_ip} kubeserver-${count.index + 1}",
     ]
   }
 }
