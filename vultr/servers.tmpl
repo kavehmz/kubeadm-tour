@@ -1,0 +1,10 @@
+#!/bin/bash
+export PUPPET_SERVER=${pupept}
+
+%{ for i, ip in nodes }
+export KUBE_NODE_${i}=${ip}
+%{ endfor }
+
+%{ for i, ip in masters }
+export KUBE_MASTER_${i}=${ip}
+%{ endfor }

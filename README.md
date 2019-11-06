@@ -1,6 +1,13 @@
 # kubeadm-tour
 
-```
-kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=10.9.96.5
-kubectl apply -f https://docs.projectcalico.org/v3.10/manifests/calico.yaml
+This is just my experience for creating a kubernetes cluster in Vultr using kubeadm, Terraform and Puppet.
+
+You need to have your api token from Vultr.
+
+```bash
+cd vultr
+terraform apply
+sleep $(( 2 * 4 * 8 * 16 ))
+# now source list of servers and login
+. ssh/servers.sh;ssh -i ssh/vultr_id_rsa $KUBE_NODE_0
 ```
