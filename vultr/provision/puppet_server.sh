@@ -2,7 +2,7 @@
 PRIV_IP=$1
 
 # wait until vult is done with its own update
-sleep 30
+sleep 120
 
 apt-get update
 apt-get install -y apt-transport-https ca-certificates curl gnupg2 software-properties-common git

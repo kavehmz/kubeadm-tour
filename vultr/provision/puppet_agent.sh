@@ -5,7 +5,7 @@ PUPPET_SERVER=$2
 CERTNAME=$3
 
 # wait until vult is done with its own update
-sleep 30
+sleep 120
 
 wget -O /tmp/puppetlabs.deb https://apt.puppetlabs.com/puppet6-release-buster.deb
 dpkg -i /tmp/puppetlabs.deb
